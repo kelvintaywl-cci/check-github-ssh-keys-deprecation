@@ -1,0 +1,35 @@
+version: 2.1
+
+orbs:
+  github-ssh-key: kelvintaywl/github-ssh-key-checkup@0.2
+
+jobs:
+  check:
+    parameters:
+      docker-image:
+        type: string
+    docker:
+      - image: << parameters.docker-image >>
+    resource_class: small
+    steps:
+      - checkout
+      - github-ssh-key/checkup
+    
+
+workflows:
+  github-ssh-key-deprecation:
+    jobs:
+      - check:
+          matrix:
+            parameters:
+              docker-image:
+                - circleci/node:14
+                - circleci/node:16
+                - circleci/node:12
+                - circleci/python:3.8
+                - circleci/python:3.9
+                - circleci/golang:1.17
+                - circleci/python:3.7
+                - circleci/node:lts
+                - circleci/node:16.13.0
+                - circleci/openjdk:8-jdk
