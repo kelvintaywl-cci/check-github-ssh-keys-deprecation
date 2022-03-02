@@ -18,6 +18,9 @@ jobs:
 
       # Instead, I have added an RSA key as part of the project here,
       # and will check out this key instead.
+      - run:
+          name: Update Known Hosts
+          command: ssh-keyscan github.com >> ~/.ssh/known_hosts
       - add_ssh_keys:
           fingerprints:
             - "b3:1e:03:cf:29:8b:36:a6:87:09:d9:a0:62:c6:97:fd"
