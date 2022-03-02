@@ -20,7 +20,7 @@ jobs:
       # and will check out this key instead.
       - add_ssh_keys:
           fingerprints:
-            - "d2:ac:f1:0b:b9:78:7b:31:22:ee:41:75:1a:01:4b:04"
+            - "b3:1e:03:cf:29:8b:36:a6:87:09:d9:a0:62:c6:97:fd"
       - github-ssh-key/checkup
     
 
