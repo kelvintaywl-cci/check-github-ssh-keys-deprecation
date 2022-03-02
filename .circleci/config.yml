@@ -12,7 +12,15 @@ jobs:
       - image: << parameters.docker-image >>
     resource_class: small
     steps:
-      - checkout
+      # NOTE: I chose not to checkout since CircleCI created an non-RSA deploy key by default,
+      # and using checkout will check out this key into the system.
+      # - checkout
+
+      # Instead, I have added an RSA key as part of the project here,
+      # and will check out this key instead.
+      - add_ssh_keys:
+          fingerprints:
+            - "d2:ac:f1:0b:b9:78:7b:31:22:ee:41:75:1a:01:4b:04"
       - github-ssh-key/checkup
     
 
